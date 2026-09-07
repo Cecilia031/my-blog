@@ -2,7 +2,7 @@
 
 # Twilight
 
-A CMS integrated static blog template built with Astro framework.
+A personal blog built with Astro and the Twilight theme.
 
 [**🖥️ Live Demo**](https://twilight.spr-aachen.com)
 [**📝 Documentation**](https://docs.twilight.spr-aachen.com/en)
@@ -53,7 +53,7 @@ English | [**中文**](docs/README_ZH.md)
 - **Dynamic Wallpaper System**: Carousel support with multiple display modes
 - **Immersive Particle Effects**: Highly customizable animated particles
 
-### Compability
+### Compatibility
 - **Modern & Responsive Design**: Fully optimized for desktop and mobile devices
 - **Multilingual Capability**: Built-in translation functionality for global accessibility
 
@@ -86,21 +86,54 @@ English | [**中文**](docs/README_ZH.md)
    pnpm dev
    ```
 
+## 🔨 Build
+
+Use the bundled build script when you want the production output plus the Pagefind search index:
+
+```bash
+pnpm build
+```
+
+The generated site will be written to `dist/` in a normal local build, or to the platform-specific output directory when the relevant deployment environment is detected.
+
 
 ## 🚀 Deployment
 
 Deploy your blog to any static hosting platform
+
+### Cloudflare Workers
+
+This repository includes `wrangler.jsonc`, so Cloudflare can deploy the static output from `dist/`.
+
+Use these settings:
+
+```bash
+pnpm install
+pnpm build
+pnpm deploy
+```
+
+If you configure the commands in Cloudflare, set the build command to `pnpm build` and the deploy command to `pnpm deploy`. The deploy command expands to `wrangler deploy`.
+
+### Cloudflare Pages
+
+For Cloudflare Pages, use:
+
+- Build command: `pnpm build`
+- Build output directory: `dist`
+- Deploy command: leave empty unless Cloudflare explicitly asks for one
 
 
 ## ⚡ Commands
 
 | Command                     | Action                        |
 |:----------------------------|:------------------------------|
-| ~~`pnpm lint`~~             | ~~Check and fix code issues~~ |
-| ~~`pnpm format`~~           | ~~Format code with Biome~~    |
+| `pnpm lint`                 | Check and fix code issues     |
+| `pnpm format`               | Format code with Biome        |
 | `pnpm check`                | Run Astro error checking      |
 | `pnpm dev`                  | Start local dev server        |
 | `pnpm build`                | Build site to `./dist/`       |
+| `pnpm deploy`               | Deploy `dist/` with Wrangler  |
 | `pnpm preview`              | Preview build locally         |
 | `pnpm astro ...`            | Run Astro CLI commands        |
 | `pnpm new-post <filename>`  | Create a new blog post        |

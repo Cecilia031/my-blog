@@ -91,6 +91,24 @@
 
 将博客部署到任意静态托管平台
 
+### Cloudflare Workers
+
+仓库已经包含 `wrangler.jsonc`，可以直接把 `dist/` 里的静态结果部署到 Cloudflare。
+
+```bash
+pnpm install
+pnpm build
+pnpm deploy
+```
+
+如果你在 Cloudflare 里手动填写命令，构建命令用 `pnpm build`，部署命令用 `pnpm deploy`。
+
+### Cloudflare Pages
+
+- 构建命令：`pnpm build`
+- 输出目录：`dist`
+- 如果平台要求部署命令，再填 `pnpm deploy`
+
 PS: 经用户反馈，**目前包括 ESA 与 EO 在内的部分国内平台无法正常使用后台功能**，请尽量选择 Cloudflare, Netify, Vercel 等国际平台
 
 

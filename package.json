@@ -2,7 +2,7 @@
 	"name": "twilight",
 	"type": "module",
 	"version": "1.0.0",
-	"description": "A blog template",
+	"description": "A personal Astro blog",
 	"scripts": {
 		"type-check": "tsc --noEmit --isolatedDeclarations",
 		"check-stylus": "node scripts/compile-inline-stylus.cjs",
@@ -11,6 +11,7 @@
 		"check": "astro check",
 		"dev": "astro dev",
 		"build": "node scripts/build-with-pagefind.cjs",
+		"deploy": "wrangler deploy",
 		"preview": "astro preview",
 		"astro": "astro",
 		"new-post": "node scripts/new-post.js"
@@ -72,7 +73,8 @@
 		"svelte": "^5.49.1",
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
-		"unist-util-visit": "^5.1.0"
+		"unist-util-visit": "^5.1.0",
+		"wrangler": "^4.50.0"
 	},
 	"devDependencies": {
 		"@astrojs/ts-plugin": "^1.10.6",

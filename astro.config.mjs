@@ -31,13 +31,14 @@ import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
-
-// Choose adapter depending on deployment environment
-const adapter = process.env.GITHUB_ACTIONS
-    ? undefined
-    : (process.env.CF_PAGES
-        ? cloudflarePages()
-        : vercel({ mode: "serverless" }));
+// Keep the site static by default so it can deploy cleanly to Cloudflare Workers
+// and other static hosts. Only enable platform-specific adapters when the
+// deployment environment explicitly asks for them.
+const adapter = process.env.CF_PAGES
+    ? cloudflarePages()
+    : process.env.VERCEL
+        ? vercel({ mode: "serverless" })
+        : undefined;
 
 // Ref: https://astro.build/config
 export default defineConfig({
